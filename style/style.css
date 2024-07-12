@@ -566,7 +566,7 @@ header{
 
 .image-container {
    position: relative;
-   max-width: 380px;
+   width: 300px;
    overflow: hidden;
 }
 
