@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style/style.css">
+   <title>Portifolio-Déleo Cambula</title>
+   <link rel="icon" href="./img/icone.png" type="image/x-icon">
+   <link rel="shortcut icon" href="./img/icone.png" type="image/x-icon">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <script src="./JS/script.js"></script>
+</head>
+<body onscroll="changeHeaderBackground()" onload="mudarSeta(); changeHeaderBackground()" onresize="mudarSeta()">
+   <!-- Inicio do menu-->
+   <header id="header">
+      <div class="header-content">
+         <div class="logo">
+            <img src="" alt="" id="Icone-logo"'>
+            <h2>Déleo Cambula.</h2>
+         </div>
+         <ul>
+            <li><a id="ancora" href="#inicio">Início</a></li>
+            <li><a id="ancora-0" href="#sobre">Sobre</a></li>
+            <li><a id="ancora-1" href="#serviços">Serviços</a></li>
+            <li><a id="ancora-2" href="#projectos" >Projectos</a></li>
+            <li><a id="ancora-3" href="#Contacto" >Contactos</a></li>
+         </ul>
+         <i class="fa-sharp fa-solid fa-bars" onclick="ShowSideBar()" ></i> 
+      </div>
+   </header>
+   <div class="menu-mobile" id="menu-mobile">
+      <div class="menu-mobile-header">
+         <i class="fa-sharp fa-solid fa-xmark" onclick="CloseSideBar()" ></i>
+         <h2>Menu </h2>
+      </div>
+      <ul>
+         <li><a href="#inicio" onclick="CloseSideBar()"><i class="fa-sharp fa-solid fa-house"></i> Início</a></li>
+         <li><a href="#sobre" onclick="CloseSideBar()"><i class="fa-sharp fa-regular fa-circle-question"></i> Sobre</a></li>
+         <li><a href="#serviços" onclick="CloseSideBar()"><i class="fa-sharp fa-solid fa-screwdriver-wrench"></i> Serviços</a></li>
+         <li><a href="#projectos" onclick="CloseSideBar()"><i class="fa-solid fa-list-check"></i> Projectos</a></li>
+         <li><a href="#Contacto" onclick="CloseSideBar()"><i class="fa-solid fa-id-card"></i>Contacto</a></li>
+      </ul>
+      <div class="home-content-text-icones">
+         <a href="https://github.com/DeleoCambula"><i class="fa-brands fa-github"></i></a>
+            <a href="https://mz.linkedin.com/in/d%C3%A9leo-leonardo-cambula-b68743302"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://wa.me/258846940737?text=Sauda%C3%A7%C3%B5es%20Déleo"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/deleo.cambula?igsh=YzhtbnZrNTJsNWs3"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+   </div>
+   
+   <!-- FIM do menu-->
+
+   <!-- Inicio da secção home -->
+   <div id="inicio" class="home"> 
+      <div class="home-content">
+         <div class="home-content-text">
+            <h2>Olá, Eu sou Déleo Cambula</h2>
+            <h1>Programador Frontend</h1>
+            <h4>& Tecnico de administração de sistemas e redes informáticas</h4>
+            <p>Destaque sua empresa na internet, leve-a para o proximo nivel, com os meus serviços de desenvolvimento web</p>
+            <div class="home-content-text-btn">
+               <a href="./cv/CV-Déleo Cambula.pdf" download><button class="btn-cv">Donwload Cv <i class="fa-solid fa-download"></i></button> </a>
+               <a href="#about-section"><button class="btn-about-me" >Sobre mim</button></a>
+            </div>
+            <div class="home-content-text-icones">
+               <a href="https://github.com/DeleoCambula"><i class="fa-brands fa-github"></i></a>
+               <a href="https://mz.linkedin.com/in/d%C3%A9leo-leonardo-cambula-b68743302"><i class="fa-brands fa-linkedin-in"></i></a>
+               <a href="https://wa.me/258846940737?text=Sauda%C3%A7%C3%B5es%20Déleo"><i class="fa-brands fa-whatsapp"></i></a>
+               <a href="https://www.instagram.com/deleo.cambula?igsh=YzhtbnZrNTJsNWs3"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+         </div>
+         <div class="home-content-img">
+               <img src="./img/me.png" alt="">
+         </div>
+      </div>
+   </div>
+   <!-- Fim da secção home -->
+
+   <!-- Inicio da secção sobre -->
+   <div class="about-section" id="sobre">
+      <div class="about-section-content">
+         <h1>Sobre mim</h1>
+         <div class="about-section-content-row1">
+            <div class="about-section-picture">
+               <img src="./img/programming-background-collage.jpg" alt="">
+            </div>
+            <div class="about-section-text">
+               <h2>Déleo Cambula </h2>
+               <p>Olá, sou Déleo Leonardo Cambula. Sou formado em administração de sistemas e redes informáticas e atualmente trabalho como programador web frontend. Presto serviços na plataforma de trabalho remoto Fiverr, onde ajudo clientes a transformar suas ideias em soluções digitais eficientes e atraentes, Acredito que um bom design e uma implementação técnica sólida são essenciais para criar experiências de usuário excepcionais, um bom website transmite confiabilidade, não perca tempo.
+                  Um bom Negocio, precisa de um bom site.
+               </p>
+            </div>
+         </div>
+         <div class="about-section-content-row2">
+               <h3 class="row-2-title">Formação acadêmica & Experiência Profissional</h3>
+               <div>
+                  <h5>2021-2023</h5>
+                  <h4>Administração de sistemas e redes informáticas</h4>
+                  <p><span>Instituto Foco</span></p>
+                  <p>Sou formado em administração de sistemas e redes informáticas onde adquiri habilidades de trabalhos na área de infraestrutura de redes, funcionamento da internet e programação web frontEnd</p>
+               </div>
+               <div>
+                  <h5>2024-2028</h5>
+                  <h4>Informática</h4>
+                  <p><span>Universidade Eduardo Mondlane</span></p>
+                  <p>Sou atualmente estudante do curso de informática na Universidade Eduardo Mondlane, curso mais voltado a programação, onde diariamente adquiro conhecimentos que servem de base para meus projectos</p>
+               </div>
+               <div>
+                  <h5>2022</h5>
+                  <h4>Técnico de administração de sistemas e redes</h4>
+                  <p><span>IsLore</span></p>
+                  <p><strong>Estagio Curicular</strong> Trabalhei no Islore como tecnico de rede, Minhas funções englobavam montagem de rede, manutenção de equipamentos de rede</p>
+               </div>
+               <div>
+                  <h5>2022</h5>
+                  <h4>Programador web Frontend</h4>
+                  <p><Span>Fiver</Span></p>
+                  <p>Trabalho atualmente como programador web para uma plataforma de trabalho git initremoto, onde ofereço serviços de programação web</p>
+               </div>
+         </div>
+      </div>
+   </div>
+   
+   <!-- Fim da secção sobre -->
+   
+   <!-- Inicio da secção de serviços -->
+   <div class="services-sections" id="serviços">
+      <div class="services-sections-content">
+         <h1>Serviços</h1>
+         <div class="services-container">
+            <div class="service-card">
+                <i class="fa-solid fa-globe"></i>
+                <h3>Criação de Websites</h3>
+                <p>Desenvolvo websites personalizados que destacam sua marca e engajam seu público. Utilizo as mais recentes tecnologias e tendências de design para criar sites responsivos, rápidos e visualmente atraentes. Transforme sua presença online com um site profissional que reflete a identidade única do seu negócio</p>
+            </div>
+            <div class="service-card">
+                <img src="./img/web-design.png" alt="">  
+                <h3>UI/UX Design</h3>
+               <p>Ofereço serviços de design UI/UX que garantem uma experiência do usuário intuitiva e agradável. Crio interfaces modernas e funcionais, focando na usabilidade e na satisfação do usuário. Deixe seus clientes impressionados com um design que é tanto esteticamente agradável quanto eficiente</p>
+            </div>
+            <div class="service-card">
+                <img src="./img/registro-do-dominio.png" alt="">
+                <h3>Registo de Dominios</h3>
+                <p>Facilito o processo de registo de domínios, garantindo que seu site tenha o endereço perfeito. Cuido de todas as etapas, desde a verificação de disponibilidade até a configuração final, para que você possa focar no crescimento do seu negócio. Garanta um domínio profissional e memorável para sua presença online.</p>
+            </div>
+            <div class="service-card">
+               <img src="./img/e-mail.png" alt="">
+               <h3>E-mails Corporativos</h3>
+               <p>Configure e-mails corporativos personalizados para aumentar a credibilidade e profissionalismo do seu negócio. Ofereço soluções completas para criação, gestão e manutenção de contas de e-mail seguras e eficientes. Fortaleça a comunicação interna e externa da sua empresa com e-mails profissionais.</p>
+           </div>
+           <div class="service-card">
+            <img src="./img/hospedagem-de-sites.png" alt="">
+            <h3>Hospedagem de sites</h3>
+            <p>Proporcione ao seu site um desempenho estável e seguro com hospedagem, que é essencial para se ter um site no ar, tempo de atividade máximo e suporte técnico especializado</p>
+        </div>
+         </div>
+         <h2 id="title-tools">Ferramentas</h2>
+        <div class="services-tools">
+            <div>
+               <H3>HTML</H3>
+               <img src="./img/html-5.png" alt="ferramenta-html">
+            </div>
+            <div>
+               <h3>CSS</h3>
+               <img src="./img/css.png" alt="ferramenta-css">
+            </div>
+            <div>
+               <h3>javascript</h3>
+               <img src="./img/javascript.png" alt="ferramenta-js">
+            </div>
+            <div>
+               <h3>Talwind</h3>
+               <img src="./img/Tailwind_CSS_Logo.svg.png" alt="ferramenta-talwind">
+            </div>
+            <div>
+               <h3>Bootstrap</h3>
+               <img src="./img/Bootstrap_logo.svg.png" alt="ferramenta-bootsrap">
+            </div>
+        </div>
+      </div>
+   </div>
+   <!-- Fim da secção de serviços -->
+
+   <!-- Inicio da secção de projectos-->
+   <div class="projects-section" id="projectos">
+      <div class="projects-section-content">
+         <h1>Projectos</h1>
+         <div class="projects-section-packs">
+            <div class="projeto">
+               <div class="image-container">
+                   <img src="./img/website-view.png" alt="Smile Family">
+                   <div class="overlay">
+                       <button class="btn-cv" class="btn"><i class="fa-solid fa-globe"></i> Ver Demo</button>
+                       <button class="btn-cv" class="btn"><i class="fa-brands fa-github"></i>Ver Codigo</button>
+                   </div>
+               </div>
+               <p>Smile Family</p>
+           </div>
+           <div class="projeto">
+            <div class="image-container">
+                <img src="./img/projecto-2.png" alt="Smile Family">
+                <div class="overlay">
+                    <button class="btn-cv" class="btn"><i class="fa-solid fa-globe"></i> Ver Demo</button>
+                    <button class="btn-cv" class="btn"><i class="fa-brands fa-github"></i>Ver Codigo</button>
+                </div>
+            </div>
+            <p>Este Portifolio</p>
+        </div
+            
+         </div>
+      </div>
+   </div>
+   <!-- Fim da secção de projectos-->
+
+   <!-- Inicio da secção de contactos-->
+   <div class="contact-section" id="Contacto">
+      <div class="contact-section-content">
+         <h1>Contactos</h1>
+         <div class="contacts-boxs">
+            <div class="text-contact">
+               <h2>Você precisa de site</h2>
+               <p>Contacte</p>
+               <p>deleoleonardocambula@gmail.com</p>
+               <p>258 846 940 737</p>
+               <a href="tel:+258846940737"><button class="btn-cv">Ligar agora <i class="fa-solid fa-phone"></i></button> </a>
+               
+            </div>
+            <img src="" alt="" id="fa-arrow">
+            <form action="https://api.staticforms.xyz/submit" method="post">
+               <h3 class="title">
+                  Envie Uma mensagem
+               </h3>
+               <label for="nome">Nome</label>   
+               <input type="text" name="$Nome" placeholder="Seu nome" required>
+               <label for="e-mail">E-mail</label>   
+               <input type="email" name="$e-mail" placeholder="Ex: example@gmail.com" required>
+               <label for="number">Contacto</label>   
+               <input type="number" name="$number" placeholder="Ex: 833 333 ** " required>
+               <label for="msg">Mensagem</label> 
+               <textarea required name="$Mensagem" id="msg"></textarea>
+               <input type="hidden" nome="_next" valor="http://127.0.0.7:5500/obrigado/index.html">
+               <button type="submit" class="btn-cv">Send</button> 
+
+               <input type="hidden" name="accessKey" value="637937bf-a178-4441-a987-a4035748c6e9">
+               <input type="text" name="honeypot" style="display:none">
+               <input type="hidden" name="redirectTo" value="http://127.0.0.7:5500/obrigado/index.html">
+              </form> 
+         </div>
+      </div>
+   </div>
+   <footer>
+      <div class="footer-content">
+         <h1>Vamos conversar</h1>
+         <div class="home-content-text-icones">
+            <a href="https://github.com/DeleoCambula"><i class="fa-brands fa-github"></i></a>
+            <a href="https://mz.linkedin.com/in/d%C3%A9leo-leonardo-cambula-b68743302"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://wa.me/258846940737?text=Sauda%C3%A7%C3%B5es%20Déleo"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/deleo.cambula?igsh=YzhtbnZrNTJsNWs3"><i class="fa-brands fa-instagram"></i></a>
+         </div>
+         <p>Copyright &copy 2024 Déleo Cambula Todos direitos reservados</p>
+      </div>
+   </footer>
+</body>
+</html>
