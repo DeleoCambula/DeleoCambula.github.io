@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Construir LDA - Materiais de construção premium em Moçambique. Cimentos, tintas, ferramentas, tubagens e mais. Entrega rápida e qualidade garantida.">
+  <meta name="keywords" content="construção, materiais, construção Moçambique, cimento, tintas, ferramentas, Construir LDA">
+  <meta name="author" content="Construir LDA">
+  <meta name="robots" content="index, follow">
+  <title>Construir LDA | Materiais de Construção Premium - Loja Online</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="general.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- ========== OVERLAY + CARRINHO LATERAL ========== -->
+  <div id="cartOverlay" class="fixed inset-0 bg-black/50 z-40 invisible opacity-0 overlay-fade" onclick="toggleCart()"></div>
+  <aside id="cartSidebar" class="fixed top-0 right-0 w-full max-w-md h-full bg-white shadow-2xl z-50 flex flex-col sidebar-cart" style="right: -100%;" aria-label="Carrinho de compras lateral" role="dialog">
+    <header class="flex justify-between items-center p-6 border-b border-gray-100">
+      <h3 class="text-xl font-bold text-[#123b5d] flex items-center gap-2"><i data-lucide="shopping-cart" class="w-6 h-6 text-[#f7931e]"></i> Carrinho</h3>
+      <button onclick="toggleCart()" class="text-gray-500 hover:text-[#123b5d] transition" aria-label="Fechar carrinho"><i data-lucide="x" class="w-7 h-7"></i></button>
+    </header>
+    <div class="flex-1 overflow-y-auto p-6 space-y-5">
+      <article class="flex gap-4 border-b pb-4">
+        <figure class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0"><i data-lucide="package" class="w-8 h-8 text-gray-400"></i></figure>
+        <div class="flex-1">
+          <p class="font-semibold text-sm">Cimento Portland 50kg</p>
+          <p class="text-[#f7931e] font-bold">24,90 €</p>
+          <div class="flex items-center gap-2 mt-1"><button class="w-7 h-7 rounded-full border text-sm">-</button><span class="font-medium">2</span><button class="w-7 h-7 rounded-full border text-sm">+</button></div>
+        </div>
+        <button class="text-gray-400 hover:text-red-500"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+      </article>
+      <article class="flex gap-4 border-b pb-4">
+        <figure class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0"><i data-lucide="paint-bucket" class="w-8 h-8 text-gray-400"></i></figure>
+        <div class="flex-1">
+          <p class="font-semibold text-sm">Tinta Plástica 18L</p>
+          <p class="text-[#f7931e] font-bold">49,99 €</p>
+          <div class="flex items-center gap-2 mt-1"><button class="w-7 h-7 rounded-full border text-sm">-</button><span class="font-medium">1</span><button class="w-7 h-7 rounded-full border text-sm">+</button></div>
+        </div>
+        <button class="text-gray-400 hover:text-red-500"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+      </article>
+    </div>
+    <footer class="p-6 border-t bg-white">
+      <div class="flex justify-between text-lg font-bold mb-4"><span>Subtotal</span><span class="text-[#123b5d]">99,79 €</span></div>
+      <button class="w-full bg-[#f7931e] hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-orange-200/50 flex items-center justify-center gap-2"><i data-lucide="credit-card" class="w-5 h-5"></i> Finalizar Compra</button>
+    </footer>
+  </aside>
+
+  <!-- ========== MOBILE MENU OVERLAY ========== -->
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleMobileMenu()"></div>
+  
+  <!-- ========== MOBILE MENU ========== -->
+  <nav id="mobileMenu" class="fixed top-0 left-0 w-80 h-full bg-white z-50 shadow-2xl mobile-menu flex flex-col" aria-label="Menu mobile">
+    <div class="flex justify-between items-center p-5 border-b">
+      <span class="text-xl font-bold text-[#123b5d]">Menu</span>
+      <button onclick="toggleMobileMenu()" class="text-gray-500"><i data-lucide="x" class="w-6 h-6"></i></button>
+    </div>
+    <div class="flex-1 p-5 space-y-4 text-[#123b5d] font-medium">
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Cimentos</a>
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Blocos</a>
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Tintas</a>
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Ferramentas</a>
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Tubos</a>
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Areia</a>
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Brita</a>
+      <a href="#" class="block py-2 text-[#f7931e] font-bold">Promoções</a>
+      <a href="#" class="block py-2 hover:text-[#f7931e]">Novidades</a>
+    </div>
+  </nav>
+
+  <!-- ========== HEADER PREMIUM ========== -->
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100" id="mainHeader">
+    <div class="bg-[#123b5d] text-white text-xs md:text-sm py-2 px-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2">
+        <address class="flex items-center gap-4 not-italic">
+          <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Maputo, Moçambique</span>
+          <span class="hidden sm:flex items-center gap-1"><i data-lucide="phone" class="w-3.5 h-3.5"></i> +258 84 123 4567</span>
+        </address>
+        <div class="flex items-center gap-4">
+          <a href="mailto:info@construir.co.mz" class="hover:text-[#f7931e] transition hidden sm:block">📧 info@construir.co.mz</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4 md:gap-6">
+      <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+        <button id="mobileMenuBtn" class="lg:hidden text-[#123b5d]" aria-label="Abrir menu mobile" onclick="toggleMobileMenu()"><i data-lucide="menu" class="w-7 h-7"></i></button>
+        <a href="/" class="flex items-center" aria-label="Construir LDA - Página inicial">
+          <img src="logo.png" alt="Construir LDA Logo" class="w-[110px] object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="text-2xl md:text-3xl font-extrabold tracking-tight hidden" style="display: none;">
+            <span class="text-[#123b5d]">CONSTRUIR</span><span class="text-[#f7931e]">LDA</span>
+          </span>
+        </a>
+      </div>
+      
+      <div class="hidden md:flex flex-1 max-w-2xl mx-auto relative">
+        <form class="relative w-full" role="search">
+          <label for="searchInput" class="sr-only">Pesquisar produtos</label>
+          <input id="searchInput" type="search" placeholder="Procurar cimentos, tintas, ferramentas..." class="w-full pl-12 pr-24 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#f7931e]/50 focus:bg-white transition shadow-sm">
+          <i data-lucide="search" class="absolute left-4 top-3.5 text-gray-400 w-5 h-5"></i>
+          <button type="submit" class="absolute right-2 top-2 bg-[#f7931e] hover:bg-orange-600 text-white px-5 py-1.5 rounded-xl font-medium transition text-sm">Pesquisar</button>
+        </form>
+      </div>
+      
+      <div class="flex items-center gap-3 md:gap-5 ml-auto">
+        <button onclick="toggleCart()" class="relative text-gray-700 hover:text-[#123b5d] transition" aria-label="Carrinho de compras">
+          <i data-lucide="shopping-cart" class="w-7 h-7"></i>
+          <span class="absolute -top-2 -right-2 bg-[#f7931e] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">2</span>
+        </button>
+      </div>
+    </div>
+    
+    <nav class="hidden lg:flex max-w-7xl mx-auto px-4 pb-3 gap-8 text-[15px] font-medium text-gray-700 items-center justify-center flex-wrap" aria-label="Navegação principal">
+      <a href="#" class="hover:text-[#f7931e] transition">Cimentos</a>
+      <a href="#" class="hover:text-[#f7931e] transition">Blocos</a>
+      <a href="#" class="hover:text-[#f7931e] transition">Tintas</a>
+      <a href="#" class="hover:text-[#f7931e] transition">Ferramentas</a>
+      <a href="#" class="hover:text-[#f7931e] transition">Tubos</a>
+      <a href="#" class="hover:text-[#f7931e] transition">Areia</a>
+      <a href="#" class="hover:text-[#f7931e] transition">Brita</a>
+      <a href="#" class="text-[#f7931e] font-semibold">Promoções</a>
+      <a href="#" class="hover:text-[#f7931e] transition">Novidades</a>
+    </nav>
+    <div class="lg:hidden px-4 pb-3">
+      <form class="relative" role="search">
+        <label for="mobileSearch" class="sr-only">Pesquisar</label>
+        <input id="mobileSearch" type="search" placeholder="O que procura?" class="w-full pl-10 pr-20 py-3 bg-gray-50 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#f7931e]/50">
+        <i data-lucide="search" class="absolute left-3 top-3 text-gray-400 w-5 h-5"></i>
+        <button type="submit" class="absolute right-1.5 top-1.5 bg-[#f7931e] text-white px-4 py-1.5 rounded-lg text-sm font-medium">Ok</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="space-y-12 md:space-y-16">
+    
+    <!-- HERO SECTION FULL SCREEN COM home.png -->
+    <section class="hero-gradient text-white relative overflow-hidden shadow-2xl w-full pt-[50px] pb-[50px] flex items-center" aria-labelledby="hero-heading">
+      <div class="max-w-7xl mx-auto px-4 py-10 w-full">
+        <div class="grid lg:grid-cols-2 gap-8 items-center relative z-10">
+          <header class="space-y-5">
+            <span class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold inline-block">🏗️ Profissional & Premium</span>
+            <h1 id="hero-heading" class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">Construa com <span class="text-[#f7931e]">Excelência</span></h1>
+            <p class="text-white/80 text-lg max-w-lg">Materiais de construção de alto padrão com entrega rápida e atendimento corporativo. Tudo para sua obra em um só lugar.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#" class="bg-[#f7931e] hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl transition flex items-center gap-2"><i data-lucide="truck"></i> Ver Produtos</a>
+              <a href="#" class="border-2 border-white/40 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition flex items-center gap-2">Falar Connosco</a>
+            </div>
+            <footer class="flex gap-5 mt-6 text-sm font-medium">
+              <div><span class="text-2xl font-bold">+5k</span><br>Clientes</div>
+              <div><span class="text-2xl font-bold">12</span><br>Anos Mercado</div>
+              <div><span class="text-2xl font-bold">24h</span><br>Entrega</div>
+            </footer>
+          </header>
+          <figure class="relative flex justify-center lg:justify-end">
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-4 w-full max-w-md border border-white/20 shadow-2xl float-animation">
+              <img src="home.png" alt="Construir LDA - Materiais de construção premium" class="rounded-2xl w-full h-auto object-cover shadow-lg" width="500" height="400" loading="lazy" onerror="this.src='https://placehold.co/500x400/123b5d/f7931e?text=Construir+LDA+Premium'">
+            </div>
+            <figcaption class="absolute -bottom-4 -left-4 glass-card rounded-2xl px-5 py-3 shadow-lg text-[#123b5d] flex items-center gap-2 font-bold text-sm">
+              <i data-lucide="shield-check" class="text-[#f7931e] w-5 h-5"></i> Qualidade Garantida
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-4 space-y-12 md:space-y-16">
+      
+      <!-- CARROSSEL DE IMAGENS - UMA POR VEZ COM DOTS -->
+      <section aria-label="Galeria de produtos e projetos" class="relative">
+        <div class="m-auto relative overflow-hidden rounded-2xl shadow-lg max-w-[600px] h-auto" id="galleryWrapper">
+          <div class="gallery-track" id="galleryTrack">
+            <figure class="gallery-slide relative">
+              <img src="Gemini_Generated_Image_29iood29iood29io.png" alt="Cimentos de alta qualidade" class="w-full md:h-auto lg:h-auto object-cover" loading="lazy">
+            </figure>
+            <figure class="gallery-slide relative">
+              <img src="Gemini_Generated_Image_pguyntpguyntpguy.png" alt="Tintas profissionais" class="w-full md:h-auto lg:h-auto object-cover" loading="lazy">
+            </figure>
+          </div>
+          <!-- Setas de navegação -->
+          <button onclick="prevGallerySlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#123b5d] p-2 rounded-full shadow transition z-10" aria-label="Anterior"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+          <button onclick="nextGallerySlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#123b5d] p-2 rounded-full shadow transition z-10" aria-label="Próximo"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+        </div>
+        <!-- Dots indicadores -->
+        <div class="flex justify-center gap-2 mt-4" id="galleryDots">
+          <button class="dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 active" data-index="0" aria-label="Slide 1"></button>
+          <button class="dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
+        </div>
+      </section>
+
+      <!-- CATEGORIAS -->
+      <section aria-labelledby="categorias-heading">
+        <header class="flex justify-between items-end mb-6">
+          <h2 id="categorias-heading" class="text-3xl font-bold text-[#123b5d]">Categorias <span class="text-[#f7931e]">Principais</span></h2>
+          <a href="#" class="text-[#f7931e] font-semibold hover:underline">Ver todas</a>
+        </header>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <article class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition text-center group cursor-pointer border border-gray-50">
+            <figure class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-[#f7931e] transition"><i data-lucide="hard-hat" class="w-7 h-7 text-[#f7931e] group-hover:text-white"></i></figure>
+            <h3 class="font-bold text-gray-800">Cimentos</h3>
+          </article>
+          <article class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition text-center group cursor-pointer">
+            <figure class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-[#123b5d] transition"><i data-lucide="paintbrush" class="w-7 h-7 text-[#123b5d] group-hover:text-white"></i></figure>
+            <h3 class="font-bold text-gray-800">Tintas</h3>
+          </article>
+          <article class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition text-center group cursor-pointer">
+            <figure class="w-14 h-14 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-gray-700 transition"><i data-lucide="wrench" class="w-7 h-7 text-gray-700 group-hover:text-white"></i></figure>
+            <h3 class="font-bold text-gray-800">Ferramentas</h3>
+          </article>
+          <article class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition text-center group cursor-pointer">
+            <figure class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition"><i data-lucide="pipette" class="w-7 h-7 text-amber-600 group-hover:text-white"></i></figure>
+            <h3 class="font-bold text-gray-800">Tubagens</h3>
+          </article>
+        </div>
+      </section>
+      
+      <!-- CARROSSEL DE PRODUTOS EM DESTAQUE (SLIDER HORIZONTAL) -->
+      <section aria-labelledby="destaques-heading">
+        <header class="flex justify-between items-end mb-6">
+          <h2 id="destaques-heading" class="text-3xl font-bold text-[#123b5d]">Em <span class="text-[#f7931e]">Destaque</span></h2>
+          <div class="flex gap-2">
+            <button onclick="document.getElementById('productsCarousel').scrollBy({left: -300, behavior: 'smooth'})" class="p-2 rounded-full border hover:bg-gray-100 transition" aria-label="Anterior"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+            <button onclick="document.getElementById('productsCarousel').scrollBy({left: 300, behavior: 'smooth'})" class="p-2 rounded-full border hover:bg-gray-100 transition" aria-label="Próximo"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+          </div>
+        </header>
+        <div id="productsCarousel" class="products-carousel">
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 3: COMO FUNCIONA ========== -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-[#f7d6b4]/40 via-white to-[#fef3e7]" aria-labelledby="como-funciona-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="text-center mb-14">
+          <span class="text-[#f38414] font-extrabold tracking-[0.25em] text-sm uppercase bg-white px-4 py-1.5 rounded-full inline-block shadow-sm">Simples Assim</span>
+          <h2 id="como-funciona-heading" class="text-3xl md:text-5xl lg:text-6xl font-black text-[#374a52] mt-4">Como pedir orçamento</h2>
+          <p class="text-gray-500 mt-3">Adicione produtos ao carrinho e solicite seu orçamento grátis em poucos cliques.</p>
+        </header>
+        
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+          <article class="bg-white p-8 rounded-3xl shadow-xl relative text-center card-produto">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#f38414] to-[#e67e22] text-white rounded-2xl flex items-center justify-center text-3xl font-black mx-auto -mt-12 shadow-xl rotate-3">1</div>
+            <h3 class="font-extrabold text-2xl mt-6 text-[#374a52]">Adicione Produtos</h3>
+            <p class="text-gray-600 mt-3 leading-relaxed">Navegue pela loja e clique no botão laranja com ícone de carrinho em cada produto desejado.</p>
+            <div class="mt-4 text-[#f38414] text-4xl">🛒</div>
+          </article>
+          <article class="bg-white p-8 rounded-3xl shadow-xl relative text-center card-produto">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#f38414] to-[#e67e22] text-white rounded-2xl flex items-center justify-center text-3xl font-black mx-auto -mt-12 shadow-xl -rotate-3">2</div>
+            <h3 class="font-extrabold text-2xl mt-6 text-[#374a52]">Revise o Carrinho</h3>
+            <p class="text-gray-600 mt-3 leading-relaxed">Abra o carrinho no canto superior para ajustar quantidades ou remover itens.</p>
+            <div class="mt-4 text-[#f38414] text-4xl">📋</div>
+          </article>
+          <article class="bg-white p-8 rounded-3xl shadow-xl relative text-center card-produto">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#f38414] to-[#e67e22] text-white rounded-2xl flex items-center justify-center text-3xl font-black mx-auto -mt-12 shadow-xl rotate-2">3</div>
+            <h3 class="font-extrabold text-2xl mt-6 text-[#374a52]">Peça Orçamento</h3>
+            <p class="text-gray-600 mt-3 leading-relaxed">No carrinho, clique em "Pedir Orçamento Grátis" e receba o valor final sem compromisso.</p>
+            <div class="mt-4 text-[#f38414] text-4xl">💰</div>
+          </article>
+        </div>
+      </div>
+    </section>
+      <!-- SEÇÃO CORPORATIVA -->
+      <section aria-labelledby="corporativo-heading" class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
+        <header class="text-center mb-10">
+          <h2 id="corporativo-heading" class="text-3xl font-bold text-[#123b5d]">Porquê a <span class="text-[#f7931e]">Construir LDA?</span></h2>
+          <p class="text-gray-500 mt-2">Compromisso corporativo com a sua obra</p>
+        </header>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div><i data-lucide="truck" class="w-10 h-10 mx-auto text-[#f7931e] mb-3"></i><h4 class="font-bold">Entrega Rápida</h4><p class="text-sm text-gray-500">24/48h úteis</p></div>
+          <div><i data-lucide="shield-check" class="w-10 h-10 mx-auto text-[#123b5d] mb-3"></i><h4 class="font-bold">Qualidade</h4><p class="text-sm text-gray-500">Certificada</p></div>
+          <div><i data-lucide="headphones" class="w-10 h-10 mx-auto text-[#f7931e] mb-3"></i><h4 class="font-bold">Suporte Pro</h4><p class="text-sm text-gray-500">Engenheiros</p></div>
+          <div><i data-lucide="badge-check" class="w-10 h-10 mx-auto text-[#123b5d] mb-3"></i><h4 class="font-bold">Garantia</h4><p class="text-sm text-gray-500">Satisfação</p></div>
+        </div>
+        <footer class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 text-center">
+          <div><span class="font-bold text-3xl text-[#123b5d]">+5.200</span><br><span class="text-sm text-gray-500">Clientes</span></div>
+          <div><span class="font-bold text-3xl text-[#123b5d]">+18k</span><br><span class="text-sm text-gray-500">Entregas</span></div>
+          <div><span class="font-bold text-3xl text-[#123b5d]">3.500</span><br><span class="text-sm text-gray-500">Produtos</span></div>
+          <div><span class="font-bold text-3xl text-[#123b5d]">12</span><br><span class="text-sm text-gray-500">Anos</span></div>
+        </footer>
+      </section>
+
+       <!-- Grid de Produtos (16 cards idênticos aos da home) -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+          <article class="carousel-product-card bg-white rounded-2xl p-4 product-card border border-gray-100 relative">
+            <figure class="h-36 bg-gray-50 rounded-xl mb-3 flex items-center justify-center"><i data-lucide="box" class="w-12 h-12 text-gray-300"></i></figure>
+            <h3 class="font-bold text-sm">Cimento Premium 50kg</h3>
+            <div class="flex text-yellow-300 text-sm my-1" aria-label="Avaliação 5 estrelas"><i class="fa-solid fa-truck"> Em stock</i></div>
+            <div class="flex items-center gap-2"><span class="text-[#f7931e] font-extrabold text-lg">500MZN</span></div>
+            <button class="mt-3 w-full bg-[#123b5d] hover:bg-[#0e2f4a] text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2"><i data-lucide="shopping-cart" class="w-4 h-4"></i> Adicionar</button>
+          </article> 
+
+    </div>
+    </div>
+  
+  </main>
+  
+  
+  <!-- FOOTER PREMIUM -->
+  <footer class="bg-[#123b5d] text-white mt-16 pt-14 pb-8 px-4" role="contentinfo">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
+      <div class="col-span-2">
+        <a href="/" class="flex items-center mb-2" aria-label="Construir LDA">
+          <img src="logo.png" alt="Construir LDA" class="h-auto w-[200px] brightness-0 invert" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <span class="text-2xl font-bold hidden" style="display: none;">CONSTRUIR<span class="text-[#f7931e]">LDA</span></span>
+        </a>
+        <p class="text-gray-300 mt-2 text-sm">Materiais de construção premium em Moçambique.</p>
+        <div class="flex gap-3 mt-4 text-xl">
+          <a href="#" aria-label="Facebook" class="hover:text-[#f7931e]"><i class="ri-facebook-fill"></i></a>
+          <a href="#" aria-label="Instagram" class="hover:text-[#f7931e]"><i class="ri-instagram-line"></i></a>
+          <a href="#" aria-label="LinkedIn" class="hover:text-[#f7931e]"><i class="ri-linkedin-fill"></i></a>
+        </div>
+      </div>
+      <nav aria-label="Links úteis">
+        <h4 class="font-bold mb-3">Links</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-white">Sobre</a></li>
+          <li><a href="#" class="hover:text-white">Blog</a></li>
+          <li><a href="#" class="hover:text-white">Carreiras</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Ajuda">
+        <h4 class="font-bold mb-3">Ajuda</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-white">FAQs</a></li>
+          <li><a href="#" class="hover:text-white">Entregas</a></li>
+          <li><a href="#" class="hover:text-white">Devoluções</a></li>
+        </ul>
+      </nav>
+      <address class="not-italic">
+        <h4 class="font-bold mb-3">Contactos</h4>
+        <p class="text-sm text-gray-300">Maputo, Moçambique<br>+258 84 123 456</p>
+      </address>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-6 flex flex-wrap justify-between text-sm text-gray-400">
+      <span>© 2025 Construir LDA. Todos os direitos reservados.</span>
+      <span>Visa • Mastercard • M-Pesa</span>
+    </div>
+  </footer>
+
+  <a href="#" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition z-20 flex items-center gap-2" aria-label="Falar no WhatsApp"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 left-6 bg-white p-3 rounded-full shadow-lg text-[#123b5d] z-20" aria-label="Voltar ao topo"><i data-lucide="arrow-up" class="w-5 h-5"></i></button>
+
+  <script src="script.js">
+  </script>
+</body>
+</html>
